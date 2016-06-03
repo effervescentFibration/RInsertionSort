@@ -12,14 +12,11 @@ insert <- function(f, element, list) {
   else {
     list[n + 1] <- list[n]
     k <- n - 1
-    while (k > 0) {
-      if (f(element, list[k + 1])) {
-        list[k] = element
-        break
-      }
-      list[k] <- list[k - 1]
+    while (k > 0 && f(element, list[k + 1])) {
+      list[k + 1] <- list[k]
       k <- k - 1
     }
+    list[k + 1] <- element
   }
   return (list)
 }
